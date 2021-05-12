@@ -161,10 +161,16 @@ bool hasSpaceBar = false;
                 if (*(w-3)=='t' && *(w-2)=='h')
                     break;
             default:
-                if (w>word && *(w-1)==utf_u && (*w==utf_o7 ||*w==utf_o71 ||*w==utf_o72 ||*w==utf_o73 ||*w==utf_o74 ||*w==utf_o75 )){
+                if (w>word && (*(w-1)==utf_u || *(w-1)==utf_U)
+                    && (*w==utf_o7 ||*w==utf_o71 ||*w==utf_o72 ||*w==utf_o73 ||*w==utf_o74 ||*w==utf_o75 ||
+                        *w==utf_O7 ||*w==utf_O71 ||*w==utf_O72 ||*w==utf_O73 ||*w==utf_O74 ||*w==utf_O75)){
                     adjust = 1;
                     *s++ = '\b';
-                    *s++ = utf_u7;
+                    if (*(w-1)==utf_U) {
+                        *s++ = utf_U7;
+                    } else {
+                        *s++ = utf_u7;
+                    }
                     count++;
                 }
                 break;
