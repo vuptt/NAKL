@@ -231,6 +231,8 @@ static NSArray              *padKeysArray        = nil;
     {
         NSNumber *keyCode = [NSNumber numberWithUnsignedInteger:i];
         NSString *string = [transformer transformedValue:keyCode];
+        NSLog(@"running here");
+        
         if ( ( string ) && ( [string length] ) )
         {
             [stringToKeyCodeDict setObject:keyCode forKey:string];
@@ -239,3 +241,4 @@ static NSArray              *padKeysArray        = nil;
 }
 
 @end
+

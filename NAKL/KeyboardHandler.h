@@ -34,7 +34,7 @@
 }
 
 @property(nonatomic, assign) UniChar* kbBuffer;
-@property(nonatomic) int kbBLength; 
+@property(nonatomic) int kbBLength;
 @property(nonatomic) int kbPLength;
 @property(nonatomic) int kbMethod;
 @property(nonatomic, retain) NSArray *vowelsMap;
