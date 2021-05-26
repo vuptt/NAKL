@@ -34,6 +34,10 @@
 #define chr_g   'g'
 #define chr_Q   'Q'
 #define chr_q   'q'
+#define chr_E   'E'
+#define chr_e   'e'
+#define chr_Y   'Y'
+#define chr_y   'y'
 
 #define LookupChar(t, c) for( ; *t && *t!=c; t++ )
 
@@ -157,9 +161,9 @@ bool hasSpaceBar = false;
             case 2:
                 if (*(w-2)=='q')
                     break;
-            case 3:
-                if (*(w-3)=='t' && *(w-2)=='h')
-                    break;
+//            case 3:
+//                if (*(w-3)=='t' && *(w-2)=='h')
+//                    break;
             default:
                 if (w>word && (*(w-1)==utf_u || *(w-1)==utf_U)
                     && (*w==utf_o7 ||*w==utf_o71 ||*w==utf_o72 ||*w==utf_o73 ||*w==utf_o74 ||*w==utf_o75 ||
@@ -173,6 +177,7 @@ bool hasSpaceBar = false;
                     }
                     count++;
                 }
+            
                 break;
         }
         *s++ = *w;
@@ -185,6 +190,8 @@ bool hasSpaceBar = false;
 - (int) uiGroup: (ushort) u
 {
     static ushort UI[] = {
+        utf_O,  utf_O1,  utf_O2,  utf_O3,  utf_O4,  utf_O5,
+        utf_o,  utf_o1,  utf_o2,  utf_o3,  utf_o4,  utf_o5,
         utf_U,  utf_U1,  utf_U2,  utf_U3,  utf_U4,  utf_U5,
         utf_u,  utf_u1,  utf_u2,  utf_u3,  utf_u4,  utf_u5,
         utf_U7, utf_U71, utf_U72, utf_U73, utf_U74, utf_U75,
@@ -292,6 +299,7 @@ bool hasSpaceBar = false;
                 vp = -1;
                 vpc = 0;
             }
+            
         }
     }
     else {
@@ -405,6 +413,7 @@ bool hasSpaceBar = false;
 
 - (int) addKey: (UniChar) key
 {
+    NSLog(@"%%S:  %hu", key);
     if (key == XK_SpaceBar) {
         int p = -1;
         
@@ -477,6 +486,14 @@ bool hasSpaceBar = false;
                                   )
                      ) && [self isValidModifier:word[i-1]:key] )
                     i = i - 1;
+                break;
+            case chr_e:
+            case chr_E:
+                i = i - 1;
+                break;
+            case chr_y:
+            case chr_Y:
+                i = i - 1;
                 break;
             case chr_u:
             case chr_U:
